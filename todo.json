@@ -1,0 +1,11 @@
+[
+  {
+    "user":1,
+    "name":"Deepak Tiwari",
+    "isProgrammer":true
+  },{
+    "user":2,
+    "name":"Sonu Singh",
+    "isProgrammer":false
+  }
+]
