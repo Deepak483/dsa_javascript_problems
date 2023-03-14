@@ -8,7 +8,7 @@ for (let i = 0; i < n; i++) {
   for (let j = i; j < n; j++) {
     const temp = matrix[i][j];
     matrix[i][j] = matrix[j][i];
-    matrix[j][i] = temp;
+    matrix[j][i] = tempr;
   }
 }
 console.log(matrix);
