@@ -1,80 +1,73 @@
-/**
- * @param {number[][]} matrix
- * @return {number[][]}
- */
-/**
-* Sample Input 1 
-3 3
-1 1 1
-1 0 1
-1 1 1
-Sample Output 1
-1 0 1
-0 0 0
-1 0 1
-Sample Input 2
-3 4
-0 1 2 0
-3 4 5 2
-1 3 1 5
-Sample Output 2
-0 0 0 0
-0 4 5 0
-0 3 1 0
- */
+let m = [
+  [1, 1, 1],
+  [1, 0, 1],
+  [1, 1, 1],
+];
 function setMatrixZeroes(matrix) {
-  //best approach
-  let m = matrix.length;//row
-  let n = matrix[0].length;//column
-  let x = 1;
-  let y = 1;
-  for (let j = 0; j < n; j++){
-    if (matrix[0][j] == 0)
-      x = 0;
+  const rows = matrix.length;
+  const cols = matrix[0].length;
+  let firstRowZero = false;
+  let firstColZero = false;
+
+  //check if the first row is zero
+  for (let col = 0; col < cols; col++) {
+    if (matrix[0][col] === 0) {
+      firstRowZero = true;
+      break;
+    }
   }
-  for (let i = 0; i < m; i++){
-    if (matrix[i][0] == 0)
-      y = 0;      
+
+  // check if the first col is zero
+  for (let row = 0; row < rows; row++) {
+    if (matrix[row][0] === 0) {
+      firstColZero = true;
+      break;
+    }
   }
-  for (let i = 1; i < m; i++){
-    for (let j = 1; j < n; j++){
-      if (matrix[i][j] == 0) {
-        matrix[i][0] = 0;
-        matrix[0][j] = 0;
+  //use first row and col as markers,scan the matrix and update markers accordingly
+  for (let row = 1; row < rows; row++) {
+    for (let col = 1; col < cols; col++) {
+      if (matrix[row][col] === 0) {
+        matrix[0][row] = 0;
+        matrix[col][0] = 0;
       }
     }
   }
-  for(let j = 1; j < n; j++) {
-    if (matrix[0][j] == 0) {
-      for (let i = 1; i < m; i++){
-        matrix[i][j] = 0;
+
+  //nullify all the row based on markers in first column
+  for (let row = 1; row < rows; row++) {
+    if (matrix[row][0] === 0) {
+      for (let col = 1; col < cols; col++) {
+        matrix[row][col] = 0;
       }
     }
   }
-  for(let i = 1; i < n; i++) {
-    if (matrix[i][0] == 0) {
-      for (let j = 0; j < n; i++){
-        matrix[i][j] = 0;
+
+  //nullify all the col based on markers in first row
+  for (let col = 1; col < cols; col++) {
+    if (matrix[0][col] === 0) {
+      for (let row = 1; row < rows; row++) {
+        matrix[row][col] = 0;
       }
     }
   }
-  if (y == 0) {
-    for (let i = 0; i < m; i++){
-      matrix[i][0] = 0;
+
+  //nullify first row if necessary
+  if (firstRowZero) {
+    for (let col = 0; col < cols; col++) {
+      matrix[0][col] = 0;
     }
   }
-  if (x == 0) {
-    for (let j = 0; j < n; j++){
-      matrix[0][j] = 0;
+
+  //nullify first col if necessary
+  if (firstColZero) {
+    for (let row = 0; row < rows; row++) {
+      matrix[row][0] = 0;
     }
   }
+
   return matrix;
 }
 
-let m = [
-  [1, 1, 1],
-  [0, 0, 1],
-  [1, 1, 1],
-];
 const result = setMatrixZeroes(m);
-console.log(result);  
+console.log(result);
