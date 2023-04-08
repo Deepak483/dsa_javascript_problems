@@ -5,20 +5,7 @@
 // //   [11, 16, 15, 6],
 // //   [10, 9, 8, 7],
 // // ];
-// let str = undefined;
-// console.log(typeof str);
-// let n = 4;
-// let arr = new Array(n);
-// for(let i = 0;i<n;i++){
-//   let newArray = new Array(n).fill(0);
-//   for(let j = 0;j<n;j++){
-//     arr.push(newArray);
-//   }
-// }
-// let leftColumn = 0,
-//   rightColumn = n - 1,
-//   topRow = 0,
-//   bottomRow = n - 1;
+
 
 // let count = 1;
 // while (count <= n * n) {

@@ -1,6 +1,6 @@
 let date = "05/11/2002";
 // let dateArray = date.split('/');
-console.log(dateArray);
+// console.log(dateArray);
 
 // let dDate = dateArray[0];
 // console.log(dDate);
@@ -8,13 +8,13 @@ console.log(dateArray);
 // let dYear = dateArray[2];
 
 // let newDateObject = new Date(dYear, dMonth - 1, dDate);
-console.log(newDateObject);
+// console.log(newDateObject);
 let todayDate = new Date();
 
 // let differenceInMilliseconds = todayDate.getTime() - newDateObject.getTime();
-console.log(differenceInMilliseconds);
+// console.log(differenceInMilliseconds);
 // let numOfDays = parseInt(differenceInMilliseconds / (60 * 60 * 24 * 1000));
-console.log(numOfDays);
+// console.log(numOfDays);
 
 function getNumberOfDays(date) {
   let dateArray = date.split("/");
@@ -28,3 +28,8 @@ function getNumberOfDays(date) {
   let numOfDays = parseInt(differenceInMilliseconds / (60 * 60 * 24 * 1000));
   return numOfDays;
 }
+
+const date1 = new Date(2021, 2, 1);
+console.log(date1);
+const date2 = Date('Thu, 01 Jan 1970 00:00:00 GMT'); 
+console.log(date2);
