@@ -33,3 +33,23 @@
 //     })
 //   }
 // }  
+
+const person = {
+  name: 'Sonu Rawat',
+  address: {
+    city: 'Mumbai',
+    country: 'India'
+  },
+  interests: ['Product Manager', 'Software Developer', 'Cinematography']
+};
+console.log(person.address.country);
+
+function Car(make,model,color) {
+  this.make = make;
+  this.model = model;
+  this.color = color;
+  this.star = function () {
+    console.log(`Car Start`);
+  }
+}
+
