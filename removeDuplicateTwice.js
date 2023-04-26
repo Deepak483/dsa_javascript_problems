@@ -1,49 +1,35 @@
-function removeDuplicatesFromSortedArrayII(n, nums) {
-  /**
- * @param {number[]} nums
- * @param {number} n
- * @return {object}
- */
-  //creating array
-  const newArray = [];
+// // function removeDuplicatesFromSortedArrayII(n, nums) {
+  
+// // }
+function removeDuplicates(nums) {
+  let i = 0;
   let count = 1;
-  let index = 1;
-  for (let i = 1; i < n; i++){
-    if (nums[i] === nums[i - 1]) {
-      newArray.push(nums[index]);
+  for (let j = 1; j < nums.length; j++){
+    if (nums[i] === nums[j])
       count++;
-      
-    }
     else
       count = 1;
     if (count <= 2) {
-      nums[index] = nums[i];
-      newArray.push(nums[i]);
-      index++;
+      i++;
+      nums[i] = nums[j];
     }
   }
-  return { index, newArray };
-  // return index;
-
-  //* another approach 
-  // let i = 0;
-  // nums.forEach(element => {
-  //   if (nums[i - 2] !== element) {
-  //     nums[i] = element;
-  //     i++;
-  //   }
-  // });
-  // return i;
+  return { newLength: i + 1,newArr:nums};
 }
-let nums = [1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 5];
-let n = nums.length;
-const result = removeDuplicatesFromSortedArrayII(n, nums);
-console.log(result);
-const newLength = 8;
-//  nums = [1, 1, 2, 2, 3, 3, 4, 5];
-console.log(nums.slice(0, newLength).join(" "));
-//count = 1;
-//index = 1;
-//traverse array if(nums[i]===nums[i-1]) then count++ else count=1;
-//if(count<=2) then nums[index ]= nums[i]; and iincrement index;
-//at last return index
+const nums = [1, 1, 1, 2, 2, 3];
+
+const newLength = removeDuplicates(nums);
+// console.log(nums.slice(0, newLength)); // Output: [1, 1, 2, 2, 3]
+console.log(newLength);
+// let index=2;
+// for(let i =2;i<nums.length;i++){
+//     if(nums[i]!==nums[index-2]){
+//         nums[index]=nums[i];
+//         index++;
+//     }
+// }
+// console.log({ newLength: index, newArr: nums });
+
+
+
+
