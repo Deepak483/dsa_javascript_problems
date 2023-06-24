@@ -1,34 +1,43 @@
 function findAnagrams(s, p) {
   const mpattern = new Map();
-  const wpattern = new Map();
+  const mwindow = new Map();
 
   const result = [];
   let k = p.length;
   let n = s.length;
+
   for (let i = 0; i < k; i++) {
-    if (mpattern.has(p[i])) {
-      mpattern.set(p[i], mpattern.get(p[i]) + 1);
-    } else {
-      mpattern.set(p[i], 1);
-    }
+    mpattern.set(p[i], (mpattern.get(p[i]) || 0) + 1);
+    mwindow.set(s[i], (mwindow.get(s[i]) || 0) + 1);
   }
-  for (let i = 0; i < k-1; i++){
-    if (wpattern.has(s[i])) {
-      wpattern.set(s[i], wpattern.get(s[i]) + 1);
-    } else {
-      wpattern.set(s[i], 1);
-    }
-  }
-  for (let i = k - 1; i < n; i++){
-    if (wpattern.has(s[i])) {
-      wpattern.set(s[i], wpattern.get(s[i]) + 1);
-    } else {
-      wpattern.set(s[i], 1);
-    }
-    let isMatch = isIdentical(mpattern, wpattern);
+  
+  for (let i = k ; i <= n; i++){
+    mwindow.set(s[i], (mwindow.get(s[i]) || 0) + 1);
+    let isMatch = isIdentical(mpattern, mwindow);
     if (isMatch) {
-      result.push(i-k+1);
+      result.push(i-k);
     }
-    wpattern.set(s[i - k + 1], wpattern.get(s[i - k + 1]) - 1);
+    
+    mwindow.set(s[i - k ], mwindow.get(s[i - k ]) - 1);
+    if (mwindow.get(s[i - k ]) === 0) {
+      mwindow.delete(s[i - k ]);
+    }
   }
+  return result;
 }
+
+function isIdentical(a,b) {
+  if (a.size !== b.size) {
+    return false;
+  }
+
+  for (const [key, value] of a.entries()) {
+    if (b.get(key) !== value) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const _res = findAnagrams("bacdgabcda", "abcd");
+console.log(_res);

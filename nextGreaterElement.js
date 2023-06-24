@@ -14,6 +14,8 @@ function nextGreaterElement(arr,n) {
 let n = arr.length;
 const ans = nextGreaterElement(arr, n);
 console.log(ans);
+[4, 6, 3, 2, 8, 1, 9]
+[6,]
 // st = [];
 // i = 0; push index st = [0] 
 // i = 1; if (arr[i] > arr[st[st.length - 1]])
